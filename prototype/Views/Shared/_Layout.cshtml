@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/App/style")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+    <body>
+        
+        <div id="header" class="navbar navbar-inverse" role="navigation">
+
+            <!--tablet Container-->
+            <div class="hide show-1050">
+                <div class="col-xs-1 col"><a href="#"><img src="~/Content/images/icons/menu-wht.png" width="36px" /></a></div>
+                <div class="col-xs-8 col">
+                    <div class="search-field">
+                        <img src="~/Content/images/icons/search-wht.png" />
+                        <input type="text" placeholder="200 results found in 32225" />
+                    </div>
+                </div>
+                <div class="col-xs-1 col"><a href="#"><img src="~/Content/images/icons/settings-wht.png" width="36px" /></a></div>
+                <div class="col-xs-1 col"><a href="#"><img src="~/Content/images/icons/sort-wht.png" width="36px" /></a></div>
+                <div class="col-xs-1 col"><a href="#"><img src="~/Content/images/icons/map-pin-wht.png" width="36px" /></a></div>
+            </div>
+
+
+            <!-- Web Container-->
+
+            <div class="container-fluid hide-1050">
+                <div class="row">
+                    <div class="logo-container col-lg-6">
+                        <a href="/" class="pull-left">
+                            <img class="logo  hide-1550" src="~/Content/images/logo/logo-full.png" height="40px"/>
+                            <img class="logo hide show-1550 margin-top-15" src="~/Content/images/logo/logo-mark.png" height="30px"/>
+                        </a>
+
+
+                        <ul class="nav nav-pills pull-left margin-left-20 hide-1050">
+                            <li class="margin-left-20">
+                                <a href="/home/search" class="active">Search Homes</a>
+                            </li>
+                            <li><a href="#">My Collections</a></li>
+                            <li><a href="#">My Messages</a></li>
+                            <li><a href="#">Find an Agent</a></li>
+                        </ul>
+                    </div>
+                    <div class="search-container col-lg-6 ">
+
+                        <div class="pull-right">
+                            <div class="search-field pull-left hide-1340">
+                                <img src="~/Content/images/icons/search-wht.png" />
+                                <input type="text" placeholder="200 results found in 32225" />
+                            </div>
+
+                            <div class="search-options pull-left">
+
+                                <a href="#" class="hide show-1340 hide-1050">
+                                    <img src="~/Content/images/icons/search-wht.png" />
+                                </a>
+
+                                <a href="#"><img src="~/Content/images/icons/settings-wht.png" /></a>
+                                <a href="#"><img src="~/Content/images/icons/sort-wht.png" /></a>
+                                <a href="#"><img src="~/Content/images/icons/map-pin-wht.png" /></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+                    
+        </div>
+
+        <div id="content-wrap">
+            @RenderBody()
+        </div>
+        
+        
+        <div class="flyout right">
+            <div class="header-wrap">
+                <div class="header">
+                    <ul class="nav nav-pills inline text-center" role="tablist">
+                        <li class="active"><a href="#filter-basics" data-toggle="pill">Basics</a></li>
+                        <li><a href="#filter-lifestyles" data-toggle="pill">Lifestyles</a></li>
+                        <li><a href="#filter-keywords" data-toggle="pill">Keywords</a></li>
+                        <li><a href="#filter-rooms" data-toggle="pill">Rooms</a></li>
+                    </ul>                
+                </div>
+            </div>
+            <div class="content-wrap">
+                <div class="content">
+                    
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="filter-basics">                                
+                            <div class="col-xs-12 margin-top-20">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">Min</div>
+                                        <input class="form-control" type="text" placeholder="Min Price">
+                                    </div>
+                                </div>                                    
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" placeholder="Max Price">
+                                        <div class="input-group-addon">Max</div>
+                                    </div>
+                                </div>                                      
+                            </div>
+                            <div class="col-xs-12 margin-top-10">
+                                <label>Beds</label>
+                                <div class="stepper" data-increment="1" data-increment-type="integer">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">-</div>                                                
+                                            <input class="form-control" type="text" placeholder="0">
+                                            <div class="input-group-addon">+</div>
+                                        </div>
+                                    </div>                                          
+                                </div>                                
+                            </div>
+                            <div class="col-xs-12 margin-top-10">
+                                <label>Baths</label>
+                                <div class="stepper" data-increment="1" data-increment-type="integer">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">-</div>                                                
+                                            <input class="form-control" type="text" placeholder="0">
+                                            <div class="input-group-addon">+</div>
+                                        </div>
+                                    </div>                                          
+                                </div>                                
+                            </div>
+                            <div class="col-xs-12 margin-top-10">
+                                <label>Square Feet</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">Min</div>
+                                        <input class="form-control" type="text" placeholder="Min Sqft">
+                                    </div>
+                                </div>                                    
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" placeholder="Max Sqft">
+                                        <div class="input-group-addon">Max</div>
+                                    </div>
+                                </div>                                      
+                            </div>                                
+                            <div class="col-xs-12 margin-top-10">
+                                <label>Year Built</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">Min</div>
+                                        <input class="form-control" type="text" placeholder="Min Year">
+                                    </div>
+                                </div>                                    
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" placeholder="Max Year">
+                                        <div class="input-group-addon">Max</div>
+                                    </div>
+                                </div>                                      
+                            </div>  
+                            <div class="col-xs-12 margin-top-10 margin-bottom-10">
+                                <label>Lot Size</label>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">Min</div>
+                                        <input class="form-control" type="text" placeholder="Min Lot Size">
+                                    </div>
+                                </div>                                    
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" placeholder="Max Lot Size">
+                                        <div class="input-group-addon">Max</div>
+                                    </div>
+                                </div>                                      
+                            </div>                                                                                                  
+                            <div class="col-xs-12 margin-top-10 margin-bottom-10">
+                                 <label>Home Type</label>
+                                 <div class="row margin-top-10 margin-bottom-10">
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                            <div class="btn-circle-inner">
+                                                Houses
+                                            </div>
+                                         </a>
+                                     </div> 
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                            <div class="btn-circle-inner">
+                                                Apartments
+                                            </div>
+                                         </a>
+                                     </div>  
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                             <div class="btn-circle-inner">
+                                                 Condos/Cops
+                                             </div>
+                                         </a>
+                                     </div>
+                                 </div>
+                                 <div class="row margin-bottom-20">
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                             <div class="btn-circle-inner">
+                                                 Townhomes
+                                             </div>
+                                         </a>
+                                     </div>
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                             <div class="btn-circle-inner">
+                                                 Manufactured
+                                             </div>
+                                         </a>
+                                     </div>
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                            <div class="btn-circle-inner">
+                                                Lots/Land
+                                            </div>
+                                         </a>
+                                     </div>                                                                                                                                                                                         
+
+                                 </div>                               
+                            </div>
+                        </div>
+                                
+                        <div class="tab-pane" id="filter-lifestyles">                                              
+                             <div class="col-xs-12 margin-top-10 margin-bottom-10">
+                                 <div class="row margin-top-10 margin-bottom-10">
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                            <div class="btn-circle-inner">
+                                                Low Crime
+                                            </div>
+                                         </a>
+                                     </div> 
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                            <div class="btn-circle-inner">
+                                                Great Shopping
+                                            </div>
+                                         </a>
+                                     </div>  
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                             <div class="btn-circle-inner">
+                                                 Pet Friendly
+                                             </div>
+                                         </a>
+                                     </div>
+                                 </div>
+                                 <div class="row margin-bottom-20">
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                             <div class="btn-circle-inner">
+                                                 Disabled Accessible
+                                             </div>
+                                         </a>
+                                     </div>
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                             <div class="btn-circle-inner">
+                                                 City Life
+                                             </div>
+                                         </a>
+                                     </div>
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                            <div class="btn-circle-inner">
+                                                Rural
+                                            </div>
+                                         </a>
+                                     </div>                                                                                                                                                                                         
+
+                                 </div>                               
+                            </div>
+                        </div>                
+                
+                        <div class="tab-pane" id="filter-keywords">                                              
+                            <div class="col-xs-12 margin-top-10 margin-bottom-10">
+                               <textarea class="form-control" placholder="Add Keywords" rows="10"></textarea>
+                            </div>
+                        </div>         
+                        
+                                       
+                        <div class="tab-pane" id="filter-rooms">                                              
+                             <div class="col-xs-12 margin-top-10 margin-bottom-10">
+                                 <div class="row margin-top-10 margin-bottom-10">
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                            <div class="btn-circle-inner">
+                                                Master Bath
+                                            </div>
+                                         </a>
+                                     </div> 
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                            <div class="btn-circle-inner">
+                                                Kitchen
+                                            </div>
+                                         </a>
+                                     </div>  
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                             <div class="btn-circle-inner">
+                                                 Backyard
+                                             </div>
+                                         </a>
+                                     </div>
+                                 </div>
+                                 <div class="row margin-bottom-20">
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                             <div class="btn-circle-inner">
+                                                 Study
+                                             </div>
+                                         </a>
+                                     </div>
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                             <div class="btn-circle-inner">
+                                                 Living Room
+                                             </div>
+                                         </a>
+                                     </div>
+                                     <div class="col-xs-4">
+                                         <a href="#" class="btn-circle">
+                                            <div class="btn-circle-inner">
+                                                Garage
+                                            </div>
+                                         </a>
+                                     </div>                                                                                                                                                                                         
+
+                                 </div>                               
+                            </div>
+                        </div>                
+                
+                    </div>
+                </div>            
+            </div>
+           
+
+            <div class="footer">
+                <a href="#">Apply</a>
+            </div>
+ 
+   
+        </div>
+        
+        @Scripts.Render("~/bundles/searchprototype")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

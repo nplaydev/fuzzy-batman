@@ -1,0 +1,78 @@
+﻿@{
+    Layout = "~/Views/Shared/_homeLayout.cshtml";
+}
+
+<style>
+    #home{
+        height: 100%;
+    }
+    .video-wrap{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+</style>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        if ("geolocation" in navigator) {
+            
+        }
+    });
+
+</script>
+
+<div id="home">
+    
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+              
+                <div class="col-md-2">
+                    <a href="/">
+                        <img class="logo margin-left-20" src="~/Content/images/logo/logo-full.png" height="40px"/>                   
+                    </a>  
+                </div>  
+                
+                <div class="col-md-10">
+                    <ul class="menu nav nav-pills pull-right">
+                        <li><a href="#">For Agents</a></li>
+                        <li>|</li>
+                        <li><a href="#">Sign In</a></li>
+                    </ul>                   
+                    <ul class="menu nav nav-pills">
+                        <li>
+                            <a href="/home/search" class="active">Search Homes</a>
+                        </li>
+                        <li><a href="#">My Collections</a></li>
+                        <li><a href="#">My Messages</a></li>
+                        <li><a href="#">Find an Agent</a></li>
+                    </ul>    
+                </div>                                             
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="video-wrap">
+        <video  
+            autoplay="" 
+            name="media"
+            muted="true"
+            width="100%">
+            <source src="http://mazwai.com/system/posts/videos/000/000/083/preview_mp4_2/Explore-HD.mp4?1407075918" type="video/webm">  
+        </video>
+
+    </div>
+    <div class="search-wrap">
+        <div class="search-bar-wrap">
+            <h1 class="message">Find Your Dream Home</h1>
+            <div class="search-bar">
+                <input id="txtSearch" type="text" placeholder="Jacksonville, FL"/>
+                <a href="/home/search" class="submit btn btn-default" type="submit">Search</a>
+            </div>
+        </div>
+    </div>
+</div>
