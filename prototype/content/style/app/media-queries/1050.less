@@ -1,0 +1,40 @@
+﻿@media only screen and (max-width: 1050px) {
+
+    /*Card Updates*/
+    @cardWidth: 45%;
+
+    .card{
+
+        width: @cardWidth;
+        margin: 0 2.5% 20px 2.5%;
+
+    }
+
+    @searchResultsWidth: @cardWidth * @cardRowCount + @cardTotalMargin; /*width of search results container for centering*/
+    .search-results{
+        width: 100%;
+    }
+
+    #header{
+        .search-field{
+            input[type='text']{
+                width: 100%;
+            }
+        }
+    }
+
+
+    .col{
+        padding: 0;
+        text-align: center;
+    }
+
+
+    /*Special Classes*/
+    .show-1050{
+        display: inherit !important;
+    }
+    .hide-1050{
+        display: none !important;
+    }    
+}

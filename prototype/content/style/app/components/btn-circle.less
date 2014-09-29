@@ -1,0 +1,25 @@
+﻿.btn-circle{
+    display: table;
+    width: 90px;
+    height: 90px;
+    .border-radius(50px,50px,50px,50px);
+    border: 1px solid @gray-dark-bg;
+    text-decoration: none;  
+    font-size: 12px;
+
+    .transition(all 0.5s ease);
+
+    &:hover{
+        background: lighten(@brand-primary,5%);
+        color: white;
+        text-decoration: none;  
+        border-color: @brand-primary;
+    }
+
+    .btn-circle-inner{
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        padding: 0 5px;
+    }
+}

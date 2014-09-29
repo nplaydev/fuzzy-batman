@@ -1,0 +1,102 @@
+﻿#home{
+    height: 100%;
+    position: relative;
+    background: black;
+    .video-wrap{
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+    }
+    .header{
+        position: fixed;
+        z-index:3;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: @headerHeight;
+        line-height: @headerHeight;
+        background: rgba(0,0,0,0.1);
+    }
+    .menu{
+        margin: 0;
+        padding: 0;
+        li{
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+        a{
+            color: white;
+            display: block;
+            .border-radius(0px,0px,0px,0px);
+            padding: 0 20px;
+            &:hover{
+                background: @brand-primary;
+            }
+            
+        }
+    }
+
+    .search-wrap{
+        width: 100%;
+        height: 100%;
+        display: table;
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+
+        .search-bar-wrap{
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            color: white;
+
+            .message{
+                font-size: 52px;
+            }
+            .search-bar{
+                display: inline-block;
+                position: relative;
+            }
+            input[type='text']{
+                width: 600px;
+                background: none;
+                border: none;
+                padding: 20px 10px;
+                border-bottom: 1px solid rgba(255,255,255,0.4);
+            }
+            .submit{
+                position: absolute;
+                top: 8px;
+                right: 10px;
+                border: none;
+                background: #00ffe7;
+                color: #044d46;
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
+
+        *:focus {
+            outline: 0;
+        }
+
+        ::-webkit-input-placeholder {
+            color: #00ffe7;
+        }
+
+        :-moz-placeholder { 
+            color: #00ffe7;
+        }
+
+        ::-moz-placeholder { 
+            color: #00ffe7;
+        }
+
+        :-ms-input-placeholder {  
+            color: #00ffe7;
+        }
+
+    }
+}

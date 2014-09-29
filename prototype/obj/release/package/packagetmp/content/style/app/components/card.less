@@ -1,0 +1,187 @@
+﻿.outer-border-radius(){
+    .border-radius(4px,4px,4px,4px);
+}
+
+@cardWidth: 400px; /*width of card*/
+@cardHeight: 460px; /*height of card*/
+@cardMargin: 20px; /*margins of card*/
+@cardRowCount: 3; /*Number of cards per row*/
+
+@cardTotalMargin: @cardMargin * (@cardRowCount * 2 + 2); /*Total Margin in Pixels*/
+
+@searchResultsWidth: @cardWidth * @cardRowCount + @cardTotalMargin; /*width of search results container for centering*/
+
+.search-results{
+    width: @searchResultsWidth;
+    float: none;
+    margin: 0 auto;
+}
+
+.card{
+    width: @cardWidth;
+    height: @cardHeight;
+    background: white;
+    .outer-border-radius;
+    .box-shadow(0px 1px 2px rgba(0,0,0,0.6));
+    position: relative;
+
+
+    float: left;
+    margin: 0 @cardMargin 20px @cardMargin;
+  
+    .preview{
+
+        @thumbHeight: 300px;
+        @secondaryDetailsHeight: 100px;
+        @menuHeight: 60px;
+
+        .outer-border-radius;
+        .thumb{
+            height: @thumbHeight;
+            width: 100%;
+            .border-radius(4px,0px,0px,4px);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+        .overlay{
+            width: 100%;
+            height: 100%;
+            background: -moz-linear-gradient(top,  rgba(0,0,0,0) 40%, rgba(0,0,0,0.01) 41%, rgba(0,0,0,0.65) 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,rgba(0,0,0,0)), color-stop(41%,rgba(0,0,0,0.01)), color-stop(100%,rgba(0,0,0,0.65)));
+            background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 40%,rgba(0,0,0,0.01) 41%,rgba(0,0,0,0.65) 100%);
+            background: -o-linear-gradient(top,  rgba(0,0,0,0) 40%,rgba(0,0,0,0.01) 41%,rgba(0,0,0,0.65) 100%);
+            background: -ms-linear-gradient(top,  rgba(0,0,0,0) 40%,rgba(0,0,0,0.01) 41%,rgba(0,0,0,0.65) 100%);
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 40%,rgba(0,0,0,0.01) 41%,rgba(0,0,0,0.65) 100%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
+            
+
+            background: linear-gradient(to bottom,  rgba(0,0,0,0) 40%,rgba(0,0,0,.7) 100%);
+
+            
+            
+            
+            position: relative;
+        }
+        .primary-details{
+            position: absolute;
+            bottom: 10px;
+            margin-left: 20px;
+            width: 65%;
+
+            .price,.address{color: white;}
+            .price{
+                font-size: 36px;
+            }
+            .address{font-size: 14px;}
+        }
+        .match{
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            background: @brand-primary;
+            text-align: center;
+            width: 60px;
+            height: 60px;
+            color: white;
+            .border-radius(50px,50px,50px,50px);
+            display: table;
+
+            span{
+                display:table-cell;
+                vertical-align: middle;
+                text-align: center;
+                line-height: 14px;
+            }
+        }
+        .content{
+            margin: 0 20px;
+            .secondary-details{
+                height: @secondaryDetailsHeight;
+                .detail{
+                    width: 100%;
+                    height: @secondaryDetailsHeight;
+                    display: table;
+                    span{
+                        display:table-cell;
+                        vertical-align: middle;
+                        text-align: center;
+                        line-height: 28px;
+                        img{
+                            margin-left:5px;
+                        }
+                        em{
+                            display: block;
+                        }
+                    }
+                }
+            }
+        }   
+        
+        .menu{
+            width: 100%;
+            height: @menuHeight;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-top: 1px solid @gray-bg;
+            background: @gray-light-bg;
+            .border-radius(0px,4px,4px,4px);
+            .row{
+                margin: 0;
+
+            }
+            a{
+                display: block;
+                width: 100%;
+                height: @menuHeight - 1;
+                line-height: @menuHeight;
+                text-align: center;
+                .box-shadow(inset 1px 0px 0px @gray-dark-bg);
+                .transition(all .5s ease);
+                position: relative;
+                margin-left: 1px;
+
+                img{
+                    height: 30px;
+                }
+
+                &.last{
+                    .border-radius(0px, 4px, 0px, 0px);
+                }
+                &:hover{
+                    background: @brand-primary;
+                }
+
+                .jewel{
+                    width: 24px;
+                    height: 24px;
+                    .border-radius(50px,50px,50px,50px);
+                    background: lighten(@brand-primary, 5%);
+                    position: absolute;
+                    top: 15%;
+                    left: 53%;
+                    color: white;
+                    text-decoration: none;
+                    line-height: 24px;
+
+                }
+
+            }
+            .col{
+                padding: 0;
+
+                &:first-child{
+                    a{
+                        .box-shadow(inset 0px 0px 0px rgba(0,0,0,0));
+                        .border-radius(0px, 0px, 4px, 0px);
+                    }
+                }
+
+            }
+
+
+        }          
+         
+    }  
+}

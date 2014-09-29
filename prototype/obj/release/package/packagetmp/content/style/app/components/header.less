@@ -1,0 +1,104 @@
+﻿#header {
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    height: @headerHeight;
+    min-height: @headerHeight;
+    line-height: @headerHeight;
+    margin: 0;
+    border: none;
+    .border-radius(0px);
+
+    .nav{
+        a{
+            padding: 0 20px;
+            color: @nav-text-color-primary;
+            .border-radius(0px);
+            .transition(background .5s ease);
+            &:hover,
+            &.active{
+                background: darken(@navbar-inverse-bg, 5%);
+            }
+        }
+    }
+
+    .search-options{
+        a{
+            display: block;
+            float: left;
+            text-align: center;
+            height: @headerHeight - 1;
+            width: @headerHeight;
+            float: left;
+            .transition(background .5s ease);
+
+            &:hover{
+                background: darken(@navbar-inverse-bg, 5%);
+            }
+
+            img{
+                line-height: @headerHeight;
+                height: 48px;
+            }
+        }
+    }
+
+    .search-field{
+        height: @headerHeight;
+        /*background: darken(@navbar-inverse-bg, 5%);*/
+        position: relative;
+
+        img{
+            margin: 0;
+            padding: 0;
+            line-height: 0;
+            height: @headerHeight;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        input[type='text']{
+            width: 500px;
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            padding-left: 60px;
+            color: white;
+            .transition(background .5s ease);
+
+
+            border: 1px solid rgba(255,255,255,0.4);
+            height: @headerHeight - 10;
+            line-height: @headerHeight - 15;
+            margin-top:5px;
+            .border-radius(4px,4px,4px,4px);
+
+            &:focus{
+                background: lighten(@navbar-inverse-bg, 5%);
+            }
+
+        }
+
+        *:focus {
+            outline: 0;
+        }
+
+        ::-webkit-input-placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        :-moz-placeholder { 
+            color: rgba(255,255,255,0.5);
+        }
+
+        ::-moz-placeholder { 
+            color: rgba(255,255,255,0.5);
+        }
+
+        :-ms-input-placeholder {  
+            color: rgba(255,255,255,0.5);
+        }
+
+    }
+}

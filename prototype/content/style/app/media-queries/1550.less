@@ -1,0 +1,63 @@
+﻿@media only screen and (max-width: 1550px) {
+
+    /*Header Updates*/
+    #header{
+        .logo-container{
+            width: 60%;
+        }
+        .search-container{
+            width: auto;
+            float: right;
+            input[type='text']{
+                width: 300px;
+            }
+        }
+
+        .nav{
+            margin-left:0px;
+        }
+    }
+
+    /*Card Updates*/
+    @cardWidth: 300px;
+
+    .card{
+
+        width: @cardWidth;
+
+        .preview{
+            .content{
+                .secondary-details{ 
+                    .detail span {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    @searchResultsWidth: @cardWidth * @cardRowCount + @cardTotalMargin; /*width of search results container for centering*/
+    .search-results{
+        width: @searchResultsWidth;
+    }
+
+
+
+    /*Special Classes*/
+    .show-1550{
+        display: inherit !important;
+    }
+    .hide-1550{
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width: 1340px) {
+    /*Special Classes*/
+    .show-1340{
+        display: inherit !important;
+    }
+    .hide-1340{
+        display: none !important;
+    }    
+}
