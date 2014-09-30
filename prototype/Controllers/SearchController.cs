@@ -1,9 +1,14 @@
-﻿using PlainElastic.Net;
+﻿using NPlay.Corp.Search.Contracts;
+using NPlay.Corp.Search.Core;
+using PlainElastic.Net;
 using PlainElastic.Net.Queries;
 using PlainElastic.Net.Serialization;
+using PlainElastic.Net.Utils;
 using System;
 using System.Configuration;
+using System.Net;
 using System.Web.Mvc;
+
 
 namespace Prototype.Controllers
 {
@@ -12,7 +17,25 @@ namespace Prototype.Controllers
     /// </summary>
     public class SearchController : Controller
     {
+        #region Private Members
+
+        private ICacheClient _cacheClient;
+
+        #endregion Private Members
+
         #region Properties
+
+        public ICacheClient CacheClient
+        {
+            get
+            {
+                if (_cacheClient == null)
+                {
+                    _cacheClient = new MongoCacheClient(ConfigurationManager.AppSettings["MongoConnectionString"], ConfigurationManager.AppSettings["MongoDatabaseName"]);
+                }
+                return _cacheClient;
+            }
+        }
 
         /// <summary>
         /// The URL to the Elastic Search server.
@@ -68,7 +91,7 @@ namespace Prototype.Controllers
         /// <param name="query">The HTML encoded query string</param>
         /// <returns>JsonResult</returns>
         [HttpGet]
-        [Route("search/{query}")]
+        [Route("listings/search/{query}")]
         public JsonResult Search(string query)
         {
             // Format the query to make Elastic happy
@@ -95,6 +118,12 @@ namespace Prototype.Controllers
                 var connection = new ElasticConnection(ElasticSearchHost, ElasticSearchPort);
                 var serializer = new JsonNetSerializer();
 
+                // If we have credentials, supply them.
+                if (!string.IsNullOrWhiteSpace(ElasticSearchLogin) && !string.IsNullOrWhiteSpace(ElasticSearchPassword))
+                {
+                    connection.Credentials = new NetworkCredential(ElasticSearchLogin, ElasticSearchPassword);
+                }
+
                 // Post the search and obtain the JSON Operation Result
                 string result = connection.Post(Commands.Search("listings", "listing"), elasticQuery);
 
@@ -104,7 +133,97 @@ namespace Prototype.Controllers
             {
                 return Json(exc.Message, JsonRequestBehavior.AllowGet);
             }
-        } 
+        }
+
+        /// <summary>
+        /// Returns a collection of image URLs for a given listing id.
+        /// </summary>
+        /// <param name="listingId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("listings/photos/{listingId:int}")]
+        public JsonResult Photos(int listingId)
+        {
+            try
+            {
+                string elasticQuery = new QueryBuilder<string>()
+                    .Query(q => q
+                        .Bool(b => b
+                           .Must(m => m
+                               .Term(t => t
+                                   .Field("listing_photo.listing_id").Value(listingId.AsString())
+                                )
+                           )
+                        )
+                    )
+                    .Size(100)
+                    .Build();
+
+                // Create a new Elastic Search connection and Json serializer, used to serialize the query
+                var connection = new ElasticConnection(ElasticSearchHost, ElasticSearchPort);
+                var serializer = new JsonNetSerializer();
+
+                // If we have credentials, supply them.
+                if (!string.IsNullOrWhiteSpace(ElasticSearchLogin) && !string.IsNullOrWhiteSpace(ElasticSearchPassword))
+                {
+                    connection.Credentials = new NetworkCredential(ElasticSearchLogin, ElasticSearchPassword);
+                }
+
+                // Post the search and obtain the JSON Operation Result
+                string result = connection.Post(Commands.Search("listing_photos", "listing_photo"), elasticQuery);
+
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception exc)
+            {
+                return Json(exc.Message, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        /// <summary>
+        /// Returns a single listing using an Elastic Search term query.
+        /// </summary>
+        /// <param name="listingId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("listings/listing/{listingId:int}")]
+        public JsonResult Listing(int listingId)
+        {
+            try
+            {
+                string elasticQuery = new QueryBuilder<string>()
+                    .Query(q => q
+                        .Bool(b => b
+                           .Must(m => m
+                               .Term(t => t
+                                   .Field("listing.listing_id").Value(listingId.AsString())
+                                )
+                           )
+                        )
+                    )
+                    .Size(1)
+                    .Build();
+
+                // Create a new Elastic Search connection and Json serializer, used to serialize the query
+                var connection = new ElasticConnection(ElasticSearchHost, ElasticSearchPort);
+                var serializer = new JsonNetSerializer();
+
+                // If we have credentials, supply them.
+                if (!string.IsNullOrWhiteSpace(ElasticSearchLogin) && !string.IsNullOrWhiteSpace(ElasticSearchPassword))
+                {
+                    connection.Credentials = new NetworkCredential(ElasticSearchLogin, ElasticSearchPassword);
+                }
+
+                // Post the search and obtain the JSON Operation Result
+                string result = connection.Post(Commands.Search("listings", "listing"), elasticQuery);
+
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception exc)
+            {
+                return Json(exc.Message, JsonRequestBehavior.AllowGet);
+            }
+        }
 
         #endregion Controller Actions
     }
