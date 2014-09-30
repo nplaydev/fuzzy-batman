@@ -1,0 +1,5 @@
+C:\Users\MMartin\Documents\GitHub\fuzzy-batman\NPlay.Corp.Search.Contracts\bin\Debug\NPlay.Corp.Search.Contracts.dll
+C:\Users\MMartin\Documents\GitHub\fuzzy-batman\NPlay.Corp.Search.Contracts\bin\Debug\NPlay.Corp.Search.Contracts.pdb
+C:\Users\MMartin\Documents\GitHub\fuzzy-batman\NPlay.Corp.Search.Contracts\obj\Debug\NPlay.Corp.Search.Contracts.csprojResolveAssemblyReference.cache
+C:\Users\MMartin\Documents\GitHub\fuzzy-batman\NPlay.Corp.Search.Contracts\obj\Debug\NPlay.Corp.Search.Contracts.dll
+C:\Users\MMartin\Documents\GitHub\fuzzy-batman\NPlay.Corp.Search.Contracts\obj\Debug\NPlay.Corp.Search.Contracts.pdb
